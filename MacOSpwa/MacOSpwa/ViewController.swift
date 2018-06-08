@@ -28,8 +28,7 @@ class ViewController: NSViewController, WKNavigationDelegate {
             let request = URLRequest(url: url as URL)
             webView.load(request)
             webView.allowsBackForwardNavigationGestures = true //allow backward and forward navigation by swiping
-        } 
-        
+        }
     }
     
     override func viewDidAppear() {
@@ -41,8 +40,6 @@ class ViewController: NSViewController, WKNavigationDelegate {
             // Update the view, if already loaded.
         }
     }
-    
-    
 }
 
 

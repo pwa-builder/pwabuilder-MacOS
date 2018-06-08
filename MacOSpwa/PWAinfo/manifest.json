@@ -1,0 +1,16 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Bing",
+    "scope": "/",
+    "display": "browser",
+    "start_url": "https://www.bing.com/",
+    "short_name": "Bing",
+    "theme_color": "#4F4F4F",
+    "description": "Bing helps you turn information into action, making it faster and easier to go from searching to doing.",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": []
+}

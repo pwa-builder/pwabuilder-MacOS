@@ -14,6 +14,7 @@
 		5729989320C9FD12008F0388 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5729989120C9FD12008F0388 /* Main.storyboard */; };
 		5729989F20C9FD12008F0388 /* MacOSpwaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5729989E20C9FD12008F0388 /* MacOSpwaTests.swift */; };
 		572998AA20C9FD12008F0388 /* MacOSpwaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572998A920C9FD12008F0388 /* MacOSpwaUITests.swift */; };
+		573097B420CB34E000329F83 /* PWAinfo in Resources */ = {isa = PBXBuildFile; fileRef = 573097B320CB34E000329F83 /* PWAinfo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		572998A520C9FD12008F0388 /* MacOSpwaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacOSpwaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		572998A920C9FD12008F0388 /* MacOSpwaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSpwaUITests.swift; sourceTree = "<group>"; };
 		572998AB20C9FD12008F0388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		573097B320CB34E000329F83 /* PWAinfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PWAinfo; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				5729989D20C9FD12008F0388 /* MacOSpwaTests */,
 				572998A820C9FD12008F0388 /* MacOSpwaUITests */,
 				5729988620C9FD10008F0388 /* Products */,
+				573097B320CB34E000329F83 /* PWAinfo */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				573097B420CB34E000329F83 /* PWAinfo in Resources */,
 				5729989020C9FD12008F0388 /* Assets.xcassets in Resources */,
 				5729989320C9FD12008F0388 /* Main.storyboard in Resources */,
 			);

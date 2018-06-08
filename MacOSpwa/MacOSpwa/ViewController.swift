@@ -12,8 +12,33 @@ import WebKit
 class ViewController: NSViewController, WKNavigationDelegate {
     
     var webView: WKWebView!
-    let appName: String = "Bing"
-    let appURL: String = "https://www.bing.com"
+    var appName: String = ""
+    var appURL: String = ""
+    
+    
+    /* CUSTOM FUNCTIONS */
+   
+    /*
+     updates appName and appURL based on name and start_url from PWAinfo/manifest.json
+    */
+    func read_manifest(){
+        let path = Bundle.main.path(forResource: "PWAinfo/manifest", ofType: "json")
+        let url = URL(fileURLWithPath: path!)
+        
+        do {
+            let jsonData = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: jsonData) as! [String:Any]
+            
+            appName = json["name"] as! String
+            appURL = json["start_url"] as! String
+            
+        } catch {
+            print(error)
+        }
+    }
+    
+    
+    /* OVERRIDE FUNCTIONS */
     
     override func loadView() {
         webView = WKWebView()
@@ -24,6 +49,7 @@ class ViewController: NSViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        read_manifest()
         if let url = URL(string: appURL){
             let request = URLRequest(url: url as URL)
             webView.load(request)
@@ -34,6 +60,7 @@ class ViewController: NSViewController, WKNavigationDelegate {
     override func viewDidAppear() {
         view.window?.title = appName
     }
+    
     
     override var representedObject: Any? {
         didSet {

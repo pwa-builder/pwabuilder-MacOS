@@ -17,10 +17,10 @@ class ViewController: NSViewController, WKNavigationDelegate {
     
     
     /* CUSTOM FUNCTIONS */
-   
+    
     /*
      updates appName and appURL based on name and start_url from PWAinfo/manifest.json
-    */
+     */
     func read_manifest(){
         let path = Bundle.main.path(forResource: "PWAinfo/manifest", ofType: "json")
         let url = URL(fileURLWithPath: path!)
@@ -49,6 +49,10 @@ class ViewController: NSViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //TODO: Find Safari version automatically
+        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
+        
         read_manifest()
         if let url = URL(string: appURL){
             let request = URLRequest(url: url as URL)

@@ -4,7 +4,7 @@
     "name": "Bing",
     "scope": "/",
     "display": "browser",
-    "start_url": "https://www.bing.com/",
+    "start_url": "https://testwebapplication2test.azurewebsites.net/",
     "short_name": "Bing",
     "theme_color": "#4F4F4F",
     "description": "Bing helps you turn information into action, making it faster and easier to go from searching to doing.",

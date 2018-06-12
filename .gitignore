@@ -1,3 +1,7 @@
-# Mac OS generated filew #
+# Mac OS generated files #
 ##########################
 *.DS_Store
+
+# Xcode generated files #
+#########################
+*xcdebugger/

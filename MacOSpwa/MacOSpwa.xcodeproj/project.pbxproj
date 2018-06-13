@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5729988520C9FD10008F0388 /* PWA Concept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PWA Concept.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5729988520C9FD10008F0388 /* PWAConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PWAConcept.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5729988820C9FD10008F0388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5729988A20C9FD10008F0388 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5729988D20C9FD10008F0388 /* MacOSpwa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacOSpwa.xcdatamodel; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 		5729988620C9FD10008F0388 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5729988520C9FD10008F0388 /* PWA Concept.app */,
+				5729988520C9FD10008F0388 /* PWAConcept.app */,
 				5729989A20C9FD12008F0388 /* MacOSpwaTests.xctest */,
 				572998A520C9FD12008F0388 /* MacOSpwaUITests.xctest */,
 			);
@@ -147,7 +147,7 @@
 			);
 			name = MacOSpwa;
 			productName = MacOSpwa;
-			productReference = 5729988520C9FD10008F0388 /* PWA Concept.app */;
+			productReference = 5729988520C9FD10008F0388 /* PWAConcept.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5729989920C9FD12008F0388 /* MacOSpwaTests */ = {
@@ -433,15 +433,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MacOSpwa/MacOSpwa.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5F52Y9NNY9;
 				INFOPLIST_FILE = MacOSpwa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.pwabuilder.MacOSpwa;
-				PRODUCT_NAME = "PWA Concept";
+				PRODUCT_NAME = PWAConcept;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -451,15 +454,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MacOSpwa/MacOSpwa.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5F52Y9NNY9;
 				INFOPLIST_FILE = MacOSpwa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.pwabuilder.MacOSpwa;
-				PRODUCT_NAME = "PWA Concept";
+				PRODUCT_NAME = PWAConcept;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

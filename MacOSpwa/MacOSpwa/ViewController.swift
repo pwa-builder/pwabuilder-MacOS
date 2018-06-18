@@ -67,11 +67,9 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         view = webView
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         //TODO: Find Safari version automatically
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
         
@@ -85,6 +83,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
     override func viewDidAppear() {
         view.window?.title = appName
+        view.window?.toggleFullScreen(self) //Enter full-screen mode
     }
     
     

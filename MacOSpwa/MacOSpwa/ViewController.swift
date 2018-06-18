@@ -80,12 +80,16 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
             webView.load(request)
             webView.allowsBackForwardNavigationGestures = true //allow backward and forward navigation by swiping
         }
+        
+        //Create a back button for the minimal-ui display
+        //let button =
     }
     
     override func viewDidAppear() {
         view.window?.title = appName
         //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
-        view.window?.toggleFullScreen(self) //Enter full-screen mode
+        //view.window?.toggleFullScreen(self) //Enter full-screen mode
+        //standalone mode is the default
     }
     
     

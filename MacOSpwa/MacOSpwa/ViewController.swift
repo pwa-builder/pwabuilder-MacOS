@@ -60,6 +60,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         return nil
     }
     
+    
     override func loadView() {
         webView = WKWebView()
         webView.navigationDelegate = self
@@ -83,6 +84,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
     override func viewDidAppear() {
         view.window?.title = appName
+        //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
         view.window?.toggleFullScreen(self) //Enter full-screen mode
     }
     
@@ -93,5 +95,3 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         }
     }
 }
-
-

@@ -14,6 +14,8 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     var webView: WKWebView!
     var appName: String = ""
     var appURL: String = ""
+    var myWindowController: NSWindowController = NSWindowController()
+    var newWebView: WKWebView!
     
     
     /* CUSTOM FUNCTIONS */
@@ -41,8 +43,20 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     /* OVERRIDE FUNCTIONS */
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        //TODO: Open new app window or safari based on manifest scope and URL
+        
+        //Open new app window
+        myWindowController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "mainWindow")) as! NSWindowController
+        myWindowController.showWindow(self)
+        newWebView = WKWebView()
+        newWebView.navigationDelegate = self
+        newWebView.uiDelegate = self
+        newWebView.load(navigationAction.request)
+        newWebView.allowsBackForwardNavigationGestures = true //allow backward and forward navigation by swiping
+        myWindowController.contentViewController?.view = newWebView
+        
         // Open new window in Safari
-        NSWorkspace.shared.open(navigationAction.request.url!)
+        //NSWorkspace.shared.open(navigationAction.request.url!)
         return nil
     }
     

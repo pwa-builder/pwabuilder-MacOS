@@ -103,11 +103,12 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         
         view.window?.toolbar? = toolBar
         */
+        
+        //TODO: Back button design style
         let backButton = NSButton()
         backButton.title = "BACK"
         backButton.bezelStyle = .regularSquare
         backButton.isBordered = false
-        
         
         let titleBarView = view.window!.standardWindowButton(.closeButton)!.superview!
         titleBarView.addSubview(backButton)

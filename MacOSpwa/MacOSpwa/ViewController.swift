@@ -106,6 +106,8 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         let backButton = NSButton()
         backButton.title = "BACK"
         backButton.bezelStyle = .regularSquare
+        backButton.isBordered = false
+        
         
         let titleBarView = view.window!.standardWindowButton(.closeButton)!.superview!
         titleBarView.addSubview(backButton)

@@ -90,6 +90,29 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
         //view.window?.toggleFullScreen(self) //Enter full-screen mode
         //standalone mode is the default
+        
+        //Create back button
+        /*let path = Bundle.main.path(forResource: "PWAinfo/icon_16", ofType: "png")
+        let url = URL(fileURLWithPath: path!)
+        var backButton = NSToolbarItem(itemIdentifier: NSToolbarItem.Identifier("backButton"))
+        backButton.image = NSImage(byReferencing: url)
+        
+        //Create title bar
+        let toolBar = NSToolbar(identifier: NSToolbar.Identifier("toolBar"))
+        toolBar.items.append(backButton)
+        
+        view.window?.toolbar? = toolBar
+        */
+        let backButton = NSButton()
+        backButton.title = "BACK"
+        backButton.bezelStyle = .regularSquare
+        
+        let titleBarView = view.window!.standardWindowButton(.closeButton)!.superview!
+        titleBarView.addSubview(backButton)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[backButton]-2-|", options: [], metrics: nil, views: ["backButton": backButton])) //places back button on right
+        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-3-[backButton]-3-|", options: [], metrics: nil, views: ["backButton": backButton]))
+        
     }
     
     

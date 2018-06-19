@@ -3,7 +3,7 @@
     "lang": "en",
     "name": "PWAConcept",
     "scope": "/",
-    "display": "browser",
+    "display": "minimal-ui",
     "start_url": "https://testwebapplication2test.azurewebsites.net/",
     "short_name": "PWAConcept",
     "theme_color": "#4F4F4F",

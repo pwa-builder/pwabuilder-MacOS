@@ -20,11 +20,10 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     let backButton = NSButton()
     
     
-    
     /* CUSTOM FUNCTIONS */
     
     /*
-     Updates appName and appURL based on name and start_url from PWAinfo/manifest.json
+     Updates app property variables based on data from PWAinfo/manifest.json
      */
     func read_manifest(){
         let path = Bundle.main.path(forResource: "PWAinfo/manifest", ofType: "json")
@@ -40,6 +39,32 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         } catch {
             print(error)
         }
+    }
+    
+    @objc func backButtonPressed(){
+        if self.webView.canGoBack {
+            self.webView.goBack()
+        }
+    }
+    
+    func fullscreen(){
+        //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
+        view.window?.toggleFullScreen(self) //Enter full-screen mode
+    }
+    
+    func minimalUI(){ //Has a back button
+        //TODO: Back button design style
+        backButton.title = "BACK"
+        backButton.bezelStyle = .regularSquare
+        backButton.isBordered = false
+        
+        let titleBarView = view.window!.standardWindowButton(.closeButton)!.superview!
+        titleBarView.addSubview(backButton)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[backButton]-2-|", options: [], metrics: nil, views: ["backButton": backButton])) //places back button on right
+        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-3-[backButton]-3-|", options: [], metrics: nil, views: ["backButton": backButton]))
+        
+        backButton.action = #selector(ViewController.backButtonPressed)
     }
     
     
@@ -83,9 +108,6 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
             webView.load(request)
             webView.allowsBackForwardNavigationGestures = true //allow backward and forward navigation by swiping
         }
-        
-        //Create a back button for the minimal-ui display
-        //let button =
     }
     
     override func viewDidAppear() {
@@ -99,32 +121,6 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         }
     }
     
-    @objc func backButtonPressed(){
-        if self.webView.canGoBack {
-            self.webView.goBack()
-        }
-    }
-    
-    func fullscreen(){
-        //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
-        view.window?.toggleFullScreen(self) //Enter full-screen mode
-    }
-    
-    
-    func minimalUI(){ //Has a back button
-        //TODO: Back button design style
-        backButton.title = "BACK"
-        backButton.bezelStyle = .regularSquare
-        backButton.isBordered = false
-        
-        let titleBarView = view.window!.standardWindowButton(.closeButton)!.superview!
-        titleBarView.addSubview(backButton)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[backButton]-2-|", options: [], metrics: nil, views: ["backButton": backButton])) //places back button on right
-        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-3-[backButton]-3-|", options: [], metrics: nil, views: ["backButton": backButton]))
-        
-        backButton.action = #selector(ViewController.backButtonPressed)
-    }
     
     override var representedObject: Any? {
         didSet {

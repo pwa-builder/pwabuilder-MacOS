@@ -16,6 +16,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     var appURL: String = ""
     var myWindowController: NSWindowController = NSWindowController()
     var newWebView: WKWebView!
+    let backButton = NSButton()
     
     
     /* CUSTOM FUNCTIONS */
@@ -93,19 +94,18 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         
         //Create back button
         /*let path = Bundle.main.path(forResource: "PWAinfo/icon_16", ofType: "png")
-        let url = URL(fileURLWithPath: path!)
-        var backButton = NSToolbarItem(itemIdentifier: NSToolbarItem.Identifier("backButton"))
-        backButton.image = NSImage(byReferencing: url)
-        
-        //Create title bar
-        let toolBar = NSToolbar(identifier: NSToolbar.Identifier("toolBar"))
-        toolBar.items.append(backButton)
-        
-        view.window?.toolbar? = toolBar
-        */
+         let url = URL(fileURLWithPath: path!)
+         var backButton = NSToolbarItem(itemIdentifier: NSToolbarItem.Identifier("backButton"))
+         backButton.image = NSImage(byReferencing: url)
+         
+         //Create title bar
+         let toolBar = NSToolbar(identifier: NSToolbar.Identifier("toolBar"))
+         toolBar.items.append(backButton)
+         
+         view.window?.toolbar? = toolBar
+         */
         
         //TODO: Back button design style
-        let backButton = NSButton()
         backButton.title = "BACK"
         backButton.bezelStyle = .regularSquare
         backButton.isBordered = false
@@ -116,6 +116,13 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[backButton]-2-|", options: [], metrics: nil, views: ["backButton": backButton])) //places back button on right
         titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-3-[backButton]-3-|", options: [], metrics: nil, views: ["backButton": backButton]))
         
+        backButton.action = #selector(ViewController.backButtonPressed)
+    }
+    
+    @objc func backButtonPressed(){
+        if self.webView.canGoBack {
+            self.webView.goBack()
+        }
     }
     
     

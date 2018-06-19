@@ -14,9 +14,11 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     var webView: WKWebView!
     var appName: String = ""
     var appURL: String = ""
+    var appDisplay: String = ""
     var myWindowController: NSWindowController = NSWindowController()
     var newWebView: WKWebView!
     let backButton = NSButton()
+    
     
     
     /* CUSTOM FUNCTIONS */
@@ -34,7 +36,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
             
             appName = json["name"] as! String
             appURL = json["start_url"] as! String
-            
+            appDisplay = json["display"] as! String
         } catch {
             print(error)
         }
@@ -88,23 +90,28 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
     override func viewDidAppear() {
         view.window?.title = appName
+        
+        //Display properties: standalone mode is the default
+        if appDisplay == "fullscreen" {
+            fullscreen()
+        } else if appDisplay == "minimal-ui" {
+            minimalUI()
+        }
+    }
+    
+    @objc func backButtonPressed(){
+        if self.webView.canGoBack {
+            self.webView.goBack()
+        }
+    }
+    
+    func fullscreen(){
         //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
-        //view.window?.toggleFullScreen(self) //Enter full-screen mode
-        //standalone mode is the default
-        
-        //Create back button
-        /*let path = Bundle.main.path(forResource: "PWAinfo/icon_16", ofType: "png")
-         let url = URL(fileURLWithPath: path!)
-         var backButton = NSToolbarItem(itemIdentifier: NSToolbarItem.Identifier("backButton"))
-         backButton.image = NSImage(byReferencing: url)
-         
-         //Create title bar
-         let toolBar = NSToolbar(identifier: NSToolbar.Identifier("toolBar"))
-         toolBar.items.append(backButton)
-         
-         view.window?.toolbar? = toolBar
-         */
-        
+        view.window?.toggleFullScreen(self) //Enter full-screen mode
+    }
+    
+    
+    func minimalUI(){ //Has a back button
         //TODO: Back button design style
         backButton.title = "BACK"
         backButton.bezelStyle = .regularSquare
@@ -118,13 +125,6 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         
         backButton.action = #selector(ViewController.backButtonPressed)
     }
-    
-    @objc func backButtonPressed(){
-        if self.webView.canGoBack {
-            self.webView.goBack()
-        }
-    }
-    
     
     override var representedObject: Any? {
         didSet {

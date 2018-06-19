@@ -15,6 +15,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     var appName: String = ""
     var appURL: String = ""
     var appDisplay: String = ""
+    var appThemeColor: String = ""
     var myWindowController: NSWindowController = NSWindowController()
     var newWebView: WKWebView!
     let backButton = NSButton()
@@ -32,10 +33,10 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         do {
             let jsonData = try Data(contentsOf: url)
             let json = try JSONSerialization.jsonObject(with: jsonData) as! [String:Any]
-            
             appName = json["name"] as! String
             appURL = json["start_url"] as! String
             appDisplay = json["display"] as! String
+            appThemeColor = json["theme_color"] as! String
         } catch {
             print(error)
         }
@@ -112,6 +113,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
     override func viewDidAppear() {
         view.window?.title = appName
+        view.window?.backgroundColor = NSColor.red
         
         //Display properties: standalone mode is the default
         if appDisplay == "fullscreen" {

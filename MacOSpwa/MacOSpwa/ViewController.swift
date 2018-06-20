@@ -59,7 +59,6 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     func minimalUI(){ //Has a back button
         //TODO: Back button design style
         backButton.title = "BACK"
-        backButton.bezelStyle = .regularSquare
         backButton.isBordered = false
         
         let titleBarView = view.window!.standardWindowButton(.closeButton)!.superview!

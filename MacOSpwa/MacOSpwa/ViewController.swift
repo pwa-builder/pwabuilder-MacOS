@@ -71,31 +71,27 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         backButton.action = #selector(ViewController.backButtonPressed)
     }
     
-    /*
-     Referenced StackOverflow for converting a hex string to NSColor: https://stackoverflow.com/questions/27430275/how-to-convert-hex-to-nscolor
-     */
+    
     func convertHexToNSColor(hexString: String) -> NSColor? {
         var colorString = hexString
-        if hexString.hasPrefix("#"){
-            colorString.remove(at: colorString.startIndex)
-        }
-    
-        var color: NSColor? = nil
-        var colorCode = UInt32()
+        assert(hexString.hasPrefix("#"), "Theme-color format in manifest is invalid. Correct emample format: #4F4F4F")
         
-        var redByte: CGFloat = 255
-        var greenByte: CGFloat = 255
-        var blueByte: CGFloat = 255
+        colorString.remove(at: colorString.startIndex) //assuming '#' is included in the string at this point
         
+        //Convert the hex string to a hex number
         let scanner = Scanner(string: colorString)
-        if scanner.scanHexInt32(&colorCode) {
-            redByte = CGFloat(colorCode & 0xff0000)
-            greenByte = CGFloat(colorCode & 0x00ff00)
-            blueByte = CGFloat(colorCode & 0xff)
-            color = NSColor(red: redByte, green: greenByte, blue: blueByte, alpha: 1.0)
+        var hexNumber = UInt32() //Int32 because that's the closest to 24 bits, which is the size of RGB values
+        if scanner.scanHexInt32(&hexNumber) {
+            //To convert hex number to CGFloat: apply a mask (if necessary), shift the bits to the right (if necessary), divide by 255
+            let red = CGFloat(hexNumber >> 16)/255
+            let green = CGFloat((hexNumber & 0x00ff00) >> 8)/255
+            let blue = CGFloat(hexNumber & 0x0000ff)/255
+            print(red, green, blue)
+            return NSColor(red: red, green: green, blue: blue, alpha: 1.0)
+        } else { //given hex value is not valid
+            return nil
         }
         
-        return color
     }
     
     

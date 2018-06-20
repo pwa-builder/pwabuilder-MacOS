@@ -68,6 +68,30 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         backButton.action = #selector(ViewController.backButtonPressed)
     }
     
+    func convertHexToNSColor(hexString: String) -> NSColor? {
+        var colorString = hexString
+        if hexString.hasPrefix("#"){
+            colorString.remove(at: colorString.startIndex)
+        }
+    
+        var color: NSColor? = nil
+        var colorCode = UInt32()
+        
+        var redByte: CGFloat = 255
+        var greenByte: CGFloat = 255
+        var blueByte: CGFloat = 255
+        
+        let scanner = Scanner(string: colorString)
+        if scanner.scanHexInt32(&colorCode) {
+            redByte = CGFloat(colorCode & 0xff0000)
+            greenByte = CGFloat(colorCode & 0x00ff00)
+            blueByte = CGFloat(colorCode & 0xff)
+            color = NSColor(red: redByte, green: greenByte, blue: blueByte, alpha: 1.0)
+        }
+        
+        return color
+    }
+    
     
     /* OVERRIDE FUNCTIONS */
     
@@ -113,7 +137,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
     override func viewDidAppear() {
         view.window?.title = appName
-        view.window?.backgroundColor = NSColor.red
+        view.window?.backgroundColor = convertHexToNSColor(hexString: appThemeColor)
         
         //Display properties: standalone mode is the default
         if appDisplay == "fullscreen" {

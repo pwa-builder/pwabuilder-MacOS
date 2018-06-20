@@ -53,6 +53,9 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         view.window?.toggleFullScreen(self) //Enter full-screen mode
     }
     
+    /*
+     Referenced StackOverflow for creating a button in the title bar: https://stackoverflow.com/questions/13475844/in-interface-builder-how-can-i-add-a-custom-button-to-a-window-title-bar
+     */
     func minimalUI(){ //Has a back button
         //TODO: Back button design style
         backButton.title = "BACK"
@@ -68,6 +71,9 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         backButton.action = #selector(ViewController.backButtonPressed)
     }
     
+    /*
+     Referenced StackOverflow for converting a hex string to NSColor: https://stackoverflow.com/questions/27430275/how-to-convert-hex-to-nscolor
+     */
     func convertHexToNSColor(hexString: String) -> NSColor? {
         var colorString = hexString
         if hexString.hasPrefix("#"){

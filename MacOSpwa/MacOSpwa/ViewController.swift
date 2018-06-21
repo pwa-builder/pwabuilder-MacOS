@@ -11,11 +11,14 @@ import WebKit
 
 class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
-    var webView: WKWebView!
+    /* App Properties */
     var appName: String = ""
     var appURL: String = ""
     var appDisplay: String = ""
     var appThemeColor: String = ""
+    
+    /* Local Properties */
+    var webView: WKWebView!
     var myWindowController: NSWindowController = NSWindowController()
     var newWebView: WKWebView!
     let backButton = NSButton()

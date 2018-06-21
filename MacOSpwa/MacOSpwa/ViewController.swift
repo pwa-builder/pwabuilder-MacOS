@@ -53,9 +53,6 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         view.window?.toggleFullScreen(self) //Enter full-screen mode
     }
     
-    /*
-     Referenced StackOverflow for creating a button in the title bar: https://stackoverflow.com/questions/13475844/in-interface-builder-how-can-i-add-a-custom-button-to-a-window-title-bar
-     */
     func minimalUI(){ //Has a back button
         //TODO: Back button design style
         backButton.title = "BACK"
@@ -131,6 +128,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         //TODO: Find Safari version automatically
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
         
+        //Load URL
         read_manifest()
         if let url = URL(string: appURL){
             let request = URLRequest(url: url as URL)
@@ -141,7 +139,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
     override func viewDidAppear() {
         view.window?.title = appName
-        view.window?.backgroundColor = convertHexToNSColor(hexString: appThemeColor)
+        view.window?.backgroundColor = convertHexToNSColor(hexString: appThemeColor) //set title bar to a custom color
         
         //Display properties: standalone mode is the default
         if appDisplay == "fullscreen" {

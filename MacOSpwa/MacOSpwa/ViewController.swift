@@ -9,7 +9,7 @@
 import Cocoa
 import WebKit
 
-class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
+class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
     
     // MARK: - App Properties
     var appName: String = ""
@@ -22,6 +22,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     var myWindowController: NSWindowController = NSWindowController()
     var newWebView: WKWebView!
     let backButton = NSButton()
+    //var handler: WKWebViewHandler!
     
     
     // MARK: - CUSTOM FUNCTIONS
@@ -112,6 +113,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
     
     // MARK: - OVERRIDE FUNCTIONS
+
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         //TODO: Open new app window or safari based on manifest scope and URL
@@ -130,13 +132,36 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         //NSWorkspace.shared.open(navigationAction.request.url!)
         return nil
     }
+   
     
+    /*
+     Called when the view begins to laod
+     */
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("didStartNavigation")
+    }
+    
+    /*
+     Called when a JS message is sent to the handler. Receives and prints the JS message
+     */
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        print("message: \(message.body)")
+    }
     
     override func loadView() {
-        webView = WKWebView()
+        //Inject JS string when document is finished loading
+        let configuration = WKWebViewConfiguration()
+        let action = "document.addEventListener('message', function(e){window.webkit.messageHandlers.iosListener.postMessage(e.data); })"
+        let script = WKUserScript(source: action, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+        configuration.userContentController.addUserScript(script)
+        configuration.userContentController.add(self, name: "iosListener")
+        
+        webView = WKWebView(frame: (NSScreen.main?.frame)!, configuration: configuration)
+        
         webView.navigationDelegate = self
         webView.uiDelegate = self
         view = webView
+        //handler = WKWebViewHandler(webView: webView)
     }
     
     override func viewDidLoad() {

@@ -11,20 +11,20 @@ import WebKit
 
 class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
-    /* App Properties */
+    // MARK: - App Properties
     var appName: String = ""
     var appURL: String = ""
     var appDisplay: String = ""
     var appThemeColor: String = ""
     
-    /* Local Properties */
+    // MARK: - Local Properties
     var webView: WKWebView!
     var myWindowController: NSWindowController = NSWindowController()
     var newWebView: WKWebView!
     let backButton = NSButton()
     
     
-    /* CUSTOM FUNCTIONS */
+    // MARK: - CUSTOM FUNCTIONS
     
     /*
      Updates app property variables based on data from PWAinfo/manifest.json
@@ -45,17 +45,28 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         }
     }
     
+    /*
+     Navigates to the previous webpage when the back button is pressed
+    */
     @objc func backButtonPressed(){
         if self.webView.canGoBack {
             self.webView.goBack()
         }
     }
     
+    
+    /*
+    Displays the application in fullscreen mode
+    */
     func fullscreen(){
         //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
         view.window?.toggleFullScreen(self) //Enter full-screen mode
     }
     
+    
+    /*
+     Displays the application in minimal-UI mode
+    */
     func minimalUI(){ //Has a back button
         //TODO: Back button design style
         backButton.title = "BACK"
@@ -71,6 +82,9 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     }
     
     
+    /*
+     Takes a hex string and converts it to NSColor type
+     */
     func convertHexToNSColor(hexString: String) -> NSColor? {
         //TODO: Should there be an assert statement instead: assert(hexString.hasPrefix("#"),"Theme-color format in manifest is invalid. Correct emample format: #4F4F4F")
         if !hexString.hasPrefix("#") {
@@ -97,7 +111,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     }
     
     
-    /* OVERRIDE FUNCTIONS */
+    // MARK: - OVERRIDE FUNCTIONS
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         //TODO: Open new app window or safari based on manifest scope and URL

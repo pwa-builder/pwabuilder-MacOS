@@ -151,8 +151,9 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     override func loadView() {
         //Inject JS string when document is finished loading
         let configuration = WKWebViewConfiguration()
-        let action = "document.addEventListener('message', function(e){window.webkit.messageHandlers.iosListener.postMessage(e.data); })"
-        let script = WKUserScript(source: action, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+        //let action = "document.addEventListener('message', function(e){window.webkit.messageHandlers.iosListener.postMessage(e.data); })"
+        let action = "document.addEventListener('click', function(){ window.webkit.messageHandlers.iosListener.postMessage('testing'); })"
+        let script = WKUserScript(source: action, injectionTime: .atDocumentStart, forMainFrameOnly: false)
         configuration.userContentController.addUserScript(script)
         configuration.userContentController.add(self, name: "iosListener")
         

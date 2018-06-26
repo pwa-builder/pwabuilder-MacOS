@@ -16,6 +16,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     var appURL: String = ""
     var appDisplay: String = ""
     var appThemeColor: String = ""
+    var appScope: String = ""
     
     // MARK: - Local Properties
     var webView: WKWebView!
@@ -40,6 +41,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
             appURL = json["start_url"] as! String
             appDisplay = json["display"] as! String
             appThemeColor = json["theme_color"] as! String
+            appScope = json["scope"] as! String
         } catch {
             print(error)
         }
@@ -47,7 +49,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     /*
      Navigates to the previous webpage when the back button is pressed
-    */
+     */
     @objc func backButtonPressed(){
         if self.webView.canGoBack {
             self.webView.goBack()
@@ -56,8 +58,8 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     
     /*
-    Displays the application in fullscreen mode
-    */
+     Displays the application in fullscreen mode
+     */
     func fullscreen(){
         //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
         view.window?.toggleFullScreen(self) //Enter full-screen mode
@@ -66,7 +68,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     /*
      Displays the application in minimal-UI mode
-    */
+     */
     func minimalUI(){ //Has a back button
         //TODO: Back button design style
         backButton.title = "BACK"
@@ -112,26 +114,30 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     
     // MARK: - OVERRIDE FUNCTIONS
-
+    
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         //TODO: Open new app window or safari based on manifest scope and URL
         
-        //Open new app window
-        myWindowController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "mainWindow")) as! NSWindowController
-        myWindowController.showWindow(self)
-        newWebView = WKWebView()
-        newWebView.navigationDelegate = self
-        newWebView.uiDelegate = self
-        newWebView.load(navigationAction.request)
-        newWebView.allowsBackForwardNavigationGestures = true //allow backward and forward navigation by swiping
-        myWindowController.contentViewController?.view = newWebView
-        
-        // Open new window in Safari
-        //NSWorkspace.shared.open(navigationAction.request.url!)
+        //navigationAction.request.url?.host.app
+        let url = URL(string: appURL)
+        if (navigationAction.request.url?.absoluteString.hasPrefix("https://" + (url?.host)! + appScope))! {
+            //Open new app window
+            myWindowController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "mainWindow")) as! NSWindowController
+            myWindowController.showWindow(self)
+            newWebView = WKWebView()
+            newWebView.navigationDelegate = self
+            newWebView.uiDelegate = self
+            newWebView.load(navigationAction.request)
+            newWebView.allowsBackForwardNavigationGestures = true //allow backward and forward navigation by swiping
+            myWindowController.contentViewController?.view = newWebView
+        }else{
+            // Open new window in Safari
+            NSWorkspace.shared.open(navigationAction.request.url!)
+        }
         return nil
     }
-   
+    
     /*
      Called when a JS message is sent to the handler. Receives and prints the JS message
      */
@@ -148,7 +154,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         configuration.userContentController.addUserScript(script)
         configuration.userContentController.add(self, name: "iosListener")
         webView = WKWebView(frame: (NSScreen.main?.frame)!, configuration: configuration)
- 
+        
         //Set delegates and load view in the window
         webView.navigationDelegate = self
         webView.uiDelegate = self

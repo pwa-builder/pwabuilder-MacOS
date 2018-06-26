@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		571763F820E2F0E800E360AA /* ManifestParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571763F720E2F0E800E360AA /* ManifestParser.swift */; };
 		5729988920C9FD10008F0388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5729988820C9FD10008F0388 /* AppDelegate.swift */; };
 		5729988B20C9FD10008F0388 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5729988A20C9FD10008F0388 /* ViewController.swift */; };
 		5729988E20C9FD10008F0388 /* MacOSpwa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5729988C20C9FD10008F0388 /* MacOSpwa.xcdatamodeld */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		571763F720E2F0E800E360AA /* ManifestParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestParser.swift; sourceTree = "<group>"; };
 		5729988520C9FD10008F0388 /* PWAConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PWAConcept.app; path = MacOSpwa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5729988820C9FD10008F0388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5729988A20C9FD10008F0388 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				5729989420C9FD12008F0388 /* Info.plist */,
 				5729989520C9FD12008F0388 /* MacOSpwa.entitlements */,
 				5729988C20C9FD10008F0388 /* MacOSpwa.xcdatamodeld */,
+				571763F720E2F0E800E360AA /* ManifestParser.swift */,
 			);
 			path = MacOSpwa;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				5729988E20C9FD10008F0388 /* MacOSpwa.xcdatamodeld in Sources */,
 				5729988B20C9FD10008F0388 /* ViewController.swift in Sources */,
 				5729988920C9FD10008F0388 /* AppDelegate.swift in Sources */,
+				571763F820E2F0E800E360AA /* ManifestParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

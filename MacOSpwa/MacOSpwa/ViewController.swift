@@ -136,9 +136,8 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
      Called when a JS message is sent to the handler. Receives and prints the JS message
      */
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print("JS Console.log: \(message.body)")
+        NSLog("FromJSConsole: %@", message.body as! NSObject)
     }
-    
     override func loadView() {
         //Inject JS string to read console.logs
         let configuration = WKWebViewConfiguration()

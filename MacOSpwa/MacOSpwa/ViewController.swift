@@ -152,16 +152,25 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         //Inject JS string when document is finished loading
         let configuration = WKWebViewConfiguration()
         //let action = "document.addEventListener('message', function(e){window.webkit.messageHandlers.iosListener.postMessage(e.data); })"
-        let action = "document.addEventListener('click', function(){ window.webkit.messageHandlers.iosListener.postMessage('testing'); })"
+        let action = "var originalCL = console.log; console.log = function(msg){ originalCL(msg); window.webkit.messageHandlers.iosListener.postMessage(msg); }"
         let script = WKUserScript(source: action, injectionTime: .atDocumentStart, forMainFrameOnly: false)
         configuration.userContentController.addUserScript(script)
         configuration.userContentController.add(self, name: "iosListener")
-        
         webView = WKWebView(frame: (NSScreen.main?.frame)!, configuration: configuration)
-        
+ 
+        //webView = WKWebView()
         webView.navigationDelegate = self
         webView.uiDelegate = self
+        
+        /*let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as! JSContext
+        let logFunction : @convention(block) (String) -> Void =
+        {
+            (msg:String) in NSLog("Console: %/@", msg)
+        }
+        context.objectForKeyedSubscript("console").setObject(unsafeBitCast(logFunction, to: AnyClass.self), forKeyedSubscript: "log" as NSCopying & NSObjectProtocol)
+        */
         view = webView
+        
         //handler = WKWebViewHandler(webView: webView)
     }
     

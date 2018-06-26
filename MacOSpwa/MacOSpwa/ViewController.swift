@@ -149,29 +149,19 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     }
     
     override func loadView() {
-        //Inject JS string when document is finished loading
+        //Inject JS string to read console.logs
         let configuration = WKWebViewConfiguration()
         //let action = "document.addEventListener('message', function(e){window.webkit.messageHandlers.iosListener.postMessage(e.data); })"
-        let action = "var originalCL = console.log; console.log = function(msg){ originalCL(msg); window.webkit.messageHandlers.iosListener.postMessage(msg); }"
-        let script = WKUserScript(source: action, injectionTime: .atDocumentStart, forMainFrameOnly: false)
+        let action = "var originalCL = console.log; console.log = function(msg){ originalCL(msg); window.webkit.messageHandlers.iosListener.postMessage(msg); }" //Run original console.log function + print it in Xcode console
+        let script = WKUserScript(source: action, injectionTime: .atDocumentStart, forMainFrameOnly: false) //Inject script at the start of the document
         configuration.userContentController.addUserScript(script)
         configuration.userContentController.add(self, name: "iosListener")
         webView = WKWebView(frame: (NSScreen.main?.frame)!, configuration: configuration)
  
-        //webView = WKWebView()
+        //Set delegates and load view in the window
         webView.navigationDelegate = self
         webView.uiDelegate = self
-        
-        /*let context = webView.value(forKeyPath: "documentView.webView.mainFrame.javaScriptContext") as! JSContext
-        let logFunction : @convention(block) (String) -> Void =
-        {
-            (msg:String) in NSLog("Console: %/@", msg)
-        }
-        context.objectForKeyedSubscript("console").setObject(unsafeBitCast(logFunction, to: AnyClass.self), forKeyedSubscript: "log" as NSCopying & NSObjectProtocol)
-        */
         view = webView
-        
-        //handler = WKWebViewHandler(webView: webView)
     }
     
     override func viewDidLoad() {

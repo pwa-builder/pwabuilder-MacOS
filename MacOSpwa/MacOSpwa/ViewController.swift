@@ -138,6 +138,8 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         NSLog("FromJSConsole: %@", message.body as! NSObject)
     }
+    
+    
     override func loadView() {
         //Inject JS string to read console.logs
         let configuration = WKWebViewConfiguration()

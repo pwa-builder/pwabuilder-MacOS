@@ -22,7 +22,6 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     var myWindowController: NSWindowController = NSWindowController()
     var newWebView: WKWebView!
     let backButton = NSButton()
-    //var handler: WKWebViewHandler!
     
     
     // MARK: - CUSTOM FUNCTIONS
@@ -133,25 +132,16 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         return nil
     }
    
-    
-    /*
-     Called when the view begins to laod
-     */
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("didStartNavigation")
-    }
-    
     /*
      Called when a JS message is sent to the handler. Receives and prints the JS message
      */
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print("message: \(message.body)")
+        print("JS Console.log: \(message.body)")
     }
     
     override func loadView() {
         //Inject JS string to read console.logs
         let configuration = WKWebViewConfiguration()
-        //let action = "document.addEventListener('message', function(e){window.webkit.messageHandlers.iosListener.postMessage(e.data); })"
         let action = "var originalCL = console.log; console.log = function(msg){ originalCL(msg); window.webkit.messageHandlers.iosListener.postMessage(msg); }" //Run original console.log function + print it in Xcode console
         let script = WKUserScript(source: action, injectionTime: .atDocumentStart, forMainFrameOnly: false) //Inject script at the start of the document
         configuration.userContentController.addUserScript(script)

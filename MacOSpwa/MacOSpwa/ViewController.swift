@@ -20,7 +20,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     // MARK: - Local Properties
     var webView: WKWebView!
-    var myWindowController: NSWindowController = NSWindowController()
+    var newWindowController: NSWindowController = NSWindowController()
     var newWebView: WKWebView!
     let backButton = NSButton()
     
@@ -104,7 +104,6 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
             let red = CGFloat(hexNumber >> 16)/255
             let green = CGFloat((hexNumber & 0x00ff00) >> 8)/255
             let blue = CGFloat(hexNumber & 0x0000ff)/255
-            print(red, green, blue)
             return NSColor(red: red, green: green, blue: blue, alpha: 1.0)
         } else { //given hex value is not valid
             return nil
@@ -123,14 +122,14 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         let url = URL(string: appURL)
         if (navigationAction.request.url?.absoluteString.hasPrefix("https://" + (url?.host)! + appScope))! {
             //Open new app window
-            myWindowController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "mainWindow")) as! NSWindowController
-            myWindowController.showWindow(self)
+            newWindowController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "mainWindow")) as! NSWindowController
+            newWindowController.showWindow(self)
             newWebView = WKWebView()
             newWebView.navigationDelegate = self
             newWebView.uiDelegate = self
             newWebView.load(navigationAction.request)
             newWebView.allowsBackForwardNavigationGestures = true //allow backward and forward navigation by swiping
-            myWindowController.contentViewController?.view = newWebView
+            newWindowController.contentViewController?.view = newWebView
         }else{
             // Open new window in Safari
             NSWorkspace.shared.open(navigationAction.request.url!)

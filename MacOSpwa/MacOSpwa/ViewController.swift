@@ -13,6 +13,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     // MARK: - App Properties
     var appName: String = ""
+    var appStartUrl: String = ""
     var appURL: String = ""
     var appDisplay: String = ""
     var appThemeColor: String = ""
@@ -70,19 +71,19 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         //TODO: Test scope feature
-        let url = URL(string: appURL)
-        if (navigationAction.request.url?.absoluteString.hasPrefix("https://" + (url?.host)! + appScope))! {
+        let newUrlString = (navigationAction.request.url?.absoluteString)!
+        
+        if ManifestParser.isUrlInManifestScope(urlString: newUrlString, startUrlString: appStartUrl, scopeString: appScope) {
             //Within scope: Open new app window
             newWindowController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "mainWindow")) as! NSWindowController
-            
             let vc = newWindowController.contentViewController as! ViewController
-            vc.appURL = (navigationAction.request.url?.absoluteString)!
+            vc.appURL = newUrlString
             newWindowController.contentViewController?.viewDidLoad()
             newWindowController.showWindow(self)
             
         } else{
             //Out of scope: Open new window in Safari
-            NSWorkspace.shared.open(navigationAction.request.url!)
+            NSWorkspace.shared.open(URL(string: newUrlString)!)
         }
         return nil
     }
@@ -105,6 +106,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
             let json = try JSONSerialization.jsonObject(with: jsonData) as! [String:Any]
             ManifestParser.parseManifest(json: json)
             appName = ManifestParser.getAppName()
+            appStartUrl = ManifestParser.getAppURL()
             appURL = ManifestParser.getAppURL()
             appDisplay = ManifestParser.getAppDisplay()
             appThemeColor = ManifestParser.getAppThemeColor()

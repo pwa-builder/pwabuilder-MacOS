@@ -39,9 +39,11 @@ class ManifestParser {
     
     
     // MARK: - MODEL METHODS
-    public static func isUrlInManifestScope(url: URL, scope: String) -> Bool {
+    public static func isUrlInManifestScope(urlString: String, startUrlString: String, scopeString: String) -> Bool {
         //TODO: check if url valid here?
-        if url.absoluteString.hasPrefix("https://" + (url.host)! + scope){
+        //TODO: test this function
+        let startUrl = URL(string: startUrlString)
+        if (urlString.hasPrefix("https://" + (startUrl?.host)! + scopeString)) {
             return true
         } else {
             return false

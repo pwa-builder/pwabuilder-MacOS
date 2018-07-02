@@ -11,19 +11,12 @@ import WebKit
 
 class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler {
     
-    // MARK: - App Properties
-    var appName: String = ""
-    var appStartUrl: String = ""
-    var appURL: String = ""
-    var appDisplay: String = ""
-    var appThemeColor: String = ""
-    var appScope: String = ""
-    
     // MARK: - Local Properties
+    var webUrl: String = ""
     var webView: WKWebView!
     var newWindowController: NSWindowController = NSWindowController()
     var newWebView: WKWebView!
-    let backButton = NSButton()
+    var manifest: Manifest!
     
     
     // MARK: - CUSTOM FUNCTIONS
@@ -37,35 +30,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         }
     }
     
-    
-    /*
-     Displays the application in fullscreen mode
-     */
-    func fullscreen(){
-        //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
-        view.window?.toggleFullScreen(self) //Enter full-screen mode
-    }
-    
-    
-    /*
-     Displays the application in minimal-UI mode
-     */
-    func minimalUI(){ //Has a back button
-        //TODO: Back button design style
-        backButton.title = "BACK"
-        backButton.isBordered = false
-        
-        //TODO: Fix back button alignment
-        let titleBarView = view.window!.standardWindowButton(.closeButton)!.superview!
-        titleBarView.addSubview(backButton)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[backButton]-2-|", options: [], metrics: nil, views: ["backButton": backButton])) //places back button on right
-        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-3-[backButton]-3-|", options: [], metrics: nil, views: ["backButton": backButton]))
-        
-        backButton.action = #selector(ViewController.backButtonPressed)
-    }
-    
-    
+   
     
     // MARK: - OVERRIDE FUNCTIONS
     
@@ -73,14 +38,13 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         //TODO: Test scope feature
         let newUrlString = (navigationAction.request.url?.absoluteString)!
         
-        if ManifestParser.isUrlInManifestScope(urlString: newUrlString, startUrlString: appStartUrl, scopeString: appScope) {
+        if manifest.isUrlInManifestScope(urlString: newUrlString) {
             //Within scope: Open new app window
             newWindowController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "mainWindow")) as! NSWindowController
             let vc = newWindowController.contentViewController as! ViewController
-            vc.appURL = newUrlString
-            newWindowController.contentViewController?.viewDidLoad()
+            vc.manifest = manifest
+            vc.webUrl = newUrlString
             newWindowController.showWindow(self)
-            
         } else{
             //Out of scope: Open new window in Safari
             NSWorkspace.shared.open(URL(string: newUrlString)!)
@@ -93,28 +57,10 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
      */
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         NSLog("FromJSConsole: %@", message.body as! NSObject)
-    }
+    } 
     
     
     override func loadView() {
-        //TODO: Remove this later --- PWABuilder will load data from manifest
-        //Load data from manifest
-         let path = Bundle.main.path(forResource: "PWAinfo/manifest", ofType: "json")
-         let url = URL(fileURLWithPath: path!)
-         do {
-            let jsonData = try Data(contentsOf: url)
-            let json = try JSONSerialization.jsonObject(with: jsonData) as! [String:Any]
-            ManifestParser.parseManifest(json: json)
-            appName = ManifestParser.getAppName()
-            appStartUrl = ManifestParser.getAppURL()
-            appURL = ManifestParser.getAppURL()
-            appDisplay = ManifestParser.getAppDisplay()
-            appThemeColor = ManifestParser.getAppThemeColor()
-            appScope = ManifestParser.getAppScope()
-         } catch {
-            print(error)
-         }
-        
         //Inject JS string to read console.logs
         let configuration = WKWebViewConfiguration()
         let action = "var originalCL = console.log; console.log = function(msg){ originalCL(msg); window.webkit.messageHandlers.iosListener.postMessage(msg); }" //Run original console.log function + print it in Xcode console
@@ -137,25 +83,71 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         
         //TODO: Find Safari version automatically
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
+    }
+    
+    override func viewWillAppear() {
+        //TODO: Remove this later --- PWABuilder will load data from manifest
+        //Load data from manifest.json
+        if manifest == nil {
+            let path = Bundle.main.path(forResource: "PWAinfo/manifest", ofType: "json")
+            let url = URL(fileURLWithPath: path!)
+            do {
+                let jsonData = try Data(contentsOf: url)
+                let json = try JSONSerialization.jsonObject(with: jsonData) as! [String:Any]
+                manifest = Manifest(json: json)
+                webUrl = manifest.getAppStartUrl()
+            } catch {
+                print(error)
+            }
+        }
         
         //Load URL
-        if let url = URL(string: appURL){
+        if let url = URL(string: webUrl){
             let request = URLRequest(url: url as URL)
             webView.load(request)
             webView.allowsBackForwardNavigationGestures = true //allow backward and forward navigation by swiping
         }
+        
     }
     
     override func viewDidAppear() {
-        view.window?.title = appName
-        view.window?.backgroundColor = NSColor.convertHexToNSColor(hexString: appThemeColor)//set title bar to a custom color
+        view.window?.title = manifest.getAppName()
+        view.window?.backgroundColor = NSColor.convertHexToNSColor(hexString: manifest.getAppThemeColor())//set title bar to a custom color
         
         //Display properties: standalone mode is the default
-        if ManifestParser.isFullscreen(display: appDisplay) {
+        if manifest.isFullscreen() {
             fullscreen()
-        } else if ManifestParser.isMinimalUI(display: appDisplay) {
+        } else if manifest.isMinimalUI() {
             minimalUI()
         }
+    }
+    
+    /*
+     Displays the application in fullscreen mode
+     */
+    func fullscreen(){
+        //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
+        view.window?.toggleFullScreen(self) //Enter full-screen mode
+    }
+    
+    
+    /*
+     Displays the application in minimal-UI mode
+     */
+    func minimalUI(){ //Has a back button
+        //TODO: Back button design style
+        let backButton = NSButton()
+        backButton.title = "BACK"
+        backButton.isBordered = false
+        
+        //TODO: Fix back button alignment
+        let titleBarView = view.window!.standardWindowButton(.closeButton)!.superview!
+        titleBarView.addSubview(backButton)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[backButton]-2-|", options: [], metrics: nil, views: ["backButton": backButton])) //places back button on right
+        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-3-[backButton]-3-|", options: [], metrics: nil, views: ["backButton": backButton]))
+        
+        backButton.action = #selector(ViewController.backButtonPressed)
     }
     
     

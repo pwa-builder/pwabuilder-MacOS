@@ -16,6 +16,7 @@
 		5729989F20C9FD12008F0388 /* MacOSpwaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5729989E20C9FD12008F0388 /* MacOSpwaTests.swift */; };
 		572998AA20C9FD12008F0388 /* MacOSpwaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572998A920C9FD12008F0388 /* MacOSpwaUITests.swift */; };
 		573097B420CB34E000329F83 /* PWAinfo in Resources */ = {isa = PBXBuildFile; fileRef = 573097B320CB34E000329F83 /* PWAinfo */; };
+		5752409B20EAA09000F139D0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5752409A20EAA09000F139D0 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		572998A920C9FD12008F0388 /* MacOSpwaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSpwaUITests.swift; sourceTree = "<group>"; };
 		572998AB20C9FD12008F0388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		573097B320CB34E000329F83 /* PWAinfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PWAinfo; sourceTree = "<group>"; };
+		5752409A20EAA09000F139D0 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				5729989520C9FD12008F0388 /* MacOSpwa.entitlements */,
 				5729988C20C9FD10008F0388 /* MacOSpwa.xcdatamodeld */,
 				571763F720E2F0E800E360AA /* ManifestParser.swift */,
+				5752409A20EAA09000F139D0 /* Extension.swift */,
 			);
 			path = MacOSpwa;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5752409B20EAA09000F139D0 /* Extension.swift in Sources */,
 				5729988E20C9FD10008F0388 /* MacOSpwa.xcdatamodeld in Sources */,
 				5729988B20C9FD10008F0388 /* ViewController.swift in Sources */,
 				5729988920C9FD10008F0388 /* AppDelegate.swift in Sources */,

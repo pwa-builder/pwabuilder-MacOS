@@ -145,8 +145,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         titleBarView.addSubview(backButton)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[backButton]-2-|", options: [], metrics: nil, views: ["backButton": backButton])) //places back button on right
-        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-3-[backButton]-3-|", options: [], metrics: nil, views: ["backButton": backButton]))
-        
+        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-3-[backButton]", options: [], metrics: nil, views: ["backButton": backButton]))
         backButton.action = #selector(ViewController.backButtonPressed)
     }
     

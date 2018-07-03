@@ -75,6 +75,12 @@ class Manifest {
         }
     }
     
-    
+    public func isThemeColorTransparent() -> Bool {
+        if appThemeColor.lowercased() == "transparent" {
+            return true
+        } else {
+            return false
+        }
+    }
     
 }

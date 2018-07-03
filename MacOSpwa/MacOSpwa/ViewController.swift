@@ -112,7 +112,13 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     override func viewDidAppear() {
         view.window?.title = manifest.getAppName()
-        view.window?.backgroundColor = NSColor.convertHexToNSColor(hexString: manifest.getAppThemeColor())//set title bar to a custom color
+        
+        //Set title bar to a custom color
+        if manifest.isThemeColorTransparent() {
+            view.window?.backgroundColor = NSColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0)
+        } else {
+            view.window?.backgroundColor = NSColor.convertHexToNSColor(hexString: manifest.getAppThemeColor())
+        }
         
         //Display properties: standalone mode is the default
         if manifest.isFullscreen() {

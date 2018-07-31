@@ -1,5 +1,5 @@
 //
-//  ManifestParser.swift
+//  Manifest.swift
 //  MacOSpwa
 //
 //  Created by Rumsha Siddiqui on 6/26/18.
@@ -12,8 +12,7 @@ import Cocoa
 //TODO: Add class description based on proper Swift structure
 class Manifest {
     
-    // MARK: - App Properties //TODO: Remove this later --- PWABuilder will load data from manifest
-    
+    // MARK: - App Properties
     private var appName: String = ""
     private var appStartUrl: String = ""
     private var appDisplay: String = ""
@@ -31,7 +30,6 @@ class Manifest {
     }
     
     init(name: String, startUrl: String, display: String, themeColor: String, scope: String){
-        //Xcode throws a runtime error if the json object does not contain a key with the given string
         appName = name
         appStartUrl = startUrl
         appDisplay = display
@@ -39,7 +37,7 @@ class Manifest {
         appScope = scope
     }
     
-    // MARK: - GETTER METHODS //TODO: Remove this later --- PWABuilder will load data from manifest
+    // MARK: - GETTER METHODS
     public func getAppName() -> String { return appName }
     public func getAppStartUrl() -> String { return appStartUrl }
     public func getAppDisplay() -> String { return appDisplay }
@@ -50,7 +48,6 @@ class Manifest {
     // MARK: - MODEL METHODS
     public func isUrlInManifestScope(urlString: String) -> Bool {
         //TODO: check if url valid here?
-        //TODO: test this function
         let startUrl = URL(string: appStartUrl)
         if (urlString.hasPrefix("https://" + (startUrl?.host)! + appScope)) {
             return true

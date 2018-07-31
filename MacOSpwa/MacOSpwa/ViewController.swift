@@ -34,8 +34,10 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     // MARK: - OVERRIDE FUNCTIONS
     
+    /*
+     Called when a "open new window" link is clicked. Opens a Safari window is the link is out of scope.
+     */
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        //TODO: Test scope feature
         let newUrlString = (navigationAction.request.url?.absoluteString)!
         
         if manifest.isUrlInManifestScope(urlString: newUrlString) {
@@ -53,7 +55,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     }
     
     /*
-     Called when a JS message is sent to the handler. Receives and prints the JS message
+     Called when a JS message is sent to the handler. Receives and prints the JS message. This is for JS debugging.
      */
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         NSLog("FromJSConsole: %@", message.body as! NSObject)
@@ -61,7 +63,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     
     override func loadView() {
-        //Inject JS string to read console.logs
+        //Inject JS string to read console.logs for debugging
         let configuration = WKWebViewConfiguration()
         let action = "var originalCL = console.log; console.log = function(msg){ originalCL(msg); window.webkit.messageHandlers.iosListener.postMessage(msg); }" //Run original console.log function + print it in Xcode console
         let script = WKUserScript(source: action, injectionTime: .atDocumentStart, forMainFrameOnly: false) //Inject script at the start of the document
@@ -87,7 +89,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     override func viewWillAppear() {
         //TODO: Remove this later --- PWABuilder will load data from manifest
-        //Load data from manifest.json
+        //Load data from manifest.json to create a manifest object
         if manifest == nil {
             let path = Bundle.main.path(forResource: "PWAinfo/manifest", ofType: "json")
             let url = URL(fileURLWithPath: path!)
@@ -141,17 +143,15 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
      Displays the application in minimal-UI mode
      */
     func minimalUI(){ //Has a back button
-        //TODO: Back button design style
         let backButton = NSButton()
         backButton.title = "BACK"
         backButton.isBordered = false
         
-        //TODO: Fix back button alignment
         let titleBarView = view.window!.standardWindowButton(.closeButton)!.superview!
         titleBarView.addSubview(backButton)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[backButton]-2-|", options: [], metrics: nil, views: ["backButton": backButton])) //places back button on right
-        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-3-[backButton]", options: [], metrics: nil, views: ["backButton": backButton]))
+        titleBarView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-3-[backButton]", options: [], metrics: nil, views: ["backButton": backButton])) //vertically aligns the button
         backButton.action = #selector(ViewController.backButtonPressed)
     }
     

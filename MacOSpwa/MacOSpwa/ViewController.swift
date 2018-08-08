@@ -125,9 +125,9 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         //Display properties: standalone mode is the default
         if manifest.isFullscreen() {
             fullscreen()
-        } else if manifest.isMinimalUI() {
+        } else if manifest.isMinimalUI() || manifest.isBrowser() {
             minimalUI()
-        }
+        } //default is standalone mode
     }
     
     /*

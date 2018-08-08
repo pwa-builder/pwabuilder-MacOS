@@ -72,6 +72,14 @@ class Manifest {
         }
     }
     
+    public func isBrowser() -> Bool {
+        if appDisplay == "browser" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     public func isThemeColorTransparent() -> Bool {
         if appThemeColor.lowercased() == "transparent" {
             return true

@@ -14,7 +14,6 @@ extension NSColor {
      Takes a hex string and converts it to NSColor type
      */
     public static func convertHexToNSColor(hexString: String) -> NSColor {
-        //TODO: Should there be an assert statement instead? Ex: assert(hexString.hasPrefix("#"),"Theme-color format in manifest is invalid. Correct emample format: #4F4F4F")
         if !hexString.hasPrefix("#") {
             print("Theme-color format in manifest is invalid. Correct emample format: #4F4F4F. A default color of light grey will be returned")
             return NSColor.lightGray //return gray as the default

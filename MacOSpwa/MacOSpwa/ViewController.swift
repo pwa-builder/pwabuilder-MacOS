@@ -134,7 +134,6 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
      Displays the application in fullscreen mode
      */
     func fullscreen(){
-        //TODO: look into fixing window screen size when exiting full screen mode (works for original ViewController code)
         view.window?.toggleFullScreen(self) //Enter full-screen mode
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-//TODO: Add class description based on proper Swift structure
+// Represents the PWA manifest
 class Manifest {
     
     // MARK: - App Properties

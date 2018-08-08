@@ -3,7 +3,7 @@
     "lang": "en",
     "name": "MacOSpwa",
     "scope": "/",
-    "display": "minimal-ui",
+    "display": "fullscreen",
     "start_url": "https://testwebapplication2test.azurewebsites.net/",
     "short_name": "MacOSpwa",
     "theme_color": "transparent",

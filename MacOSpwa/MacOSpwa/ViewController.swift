@@ -35,7 +35,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     // MARK: - OVERRIDE FUNCTIONS
     
     /*
-     Called when a "open new window" link is clicked. Opens a Safari window is the link is out of scope.
+     Called when a "open new window" link is clicked. Opens a Safari window if the link is out of scope.
      */
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         let newUrlString = (navigationAction.request.url?.absoluteString)!

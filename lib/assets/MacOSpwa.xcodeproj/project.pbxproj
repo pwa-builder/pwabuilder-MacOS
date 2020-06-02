@@ -10,68 +10,27 @@
 		571763F820E2F0E800E360AA /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571763F720E2F0E800E360AA /* Manifest.swift */; };
 		5729988920C9FD10008F0388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5729988820C9FD10008F0388 /* AppDelegate.swift */; };
 		5729988B20C9FD10008F0388 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5729988A20C9FD10008F0388 /* ViewController.swift */; };
-		5729988E20C9FD10008F0388 /* MacOSpwa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5729988C20C9FD10008F0388 /* MacOSpwa.xcdatamodeld */; };
 		5729989020C9FD12008F0388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5729988F20C9FD12008F0388 /* Assets.xcassets */; };
 		5729989320C9FD12008F0388 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5729989120C9FD12008F0388 /* Main.storyboard */; };
-		5729989F20C9FD12008F0388 /* MacOSpwaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5729989E20C9FD12008F0388 /* MacOSpwaTests.swift */; };
-		572998AA20C9FD12008F0388 /* MacOSpwaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572998A920C9FD12008F0388 /* MacOSpwaUITests.swift */; };
 		573097B420CB34E000329F83 /* PWAinfo in Resources */ = {isa = PBXBuildFile; fileRef = 573097B320CB34E000329F83 /* PWAinfo */; };
 		5752409B20EAA09000F139D0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5752409A20EAA09000F139D0 /* Extension.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		5729989B20C9FD12008F0388 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5729987D20C9FD10008F0388 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5729988420C9FD10008F0388;
-			remoteInfo = MacOSpwa;
-		};
-		572998A620C9FD12008F0388 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5729987D20C9FD10008F0388 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5729988420C9FD10008F0388;
-			remoteInfo = MacOSpwa;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		571763F720E2F0E800E360AA /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
 		5729988520C9FD10008F0388 /* PWAConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PWAConcept.app; path = MacOSpwa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5729988820C9FD10008F0388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5729988A20C9FD10008F0388 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5729988D20C9FD10008F0388 /* MacOSpwa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MacOSpwa.xcdatamodel; sourceTree = "<group>"; };
 		5729988F20C9FD12008F0388 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5729989220C9FD12008F0388 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5729989420C9FD12008F0388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5729989520C9FD12008F0388 /* MacOSpwa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacOSpwa.entitlements; sourceTree = "<group>"; };
-		5729989A20C9FD12008F0388 /* MacOSpwaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacOSpwaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5729989E20C9FD12008F0388 /* MacOSpwaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSpwaTests.swift; sourceTree = "<group>"; };
-		572998A020C9FD12008F0388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		572998A520C9FD12008F0388 /* MacOSpwaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacOSpwaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		572998A920C9FD12008F0388 /* MacOSpwaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacOSpwaUITests.swift; sourceTree = "<group>"; };
-		572998AB20C9FD12008F0388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		573097B320CB34E000329F83 /* PWAinfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PWAinfo; sourceTree = "<group>"; };
 		5752409A20EAA09000F139D0 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5729988220C9FD10008F0388 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5729989720C9FD12008F0388 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		572998A220C9FD12008F0388 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -85,8 +44,6 @@
 			isa = PBXGroup;
 			children = (
 				5729988720C9FD10008F0388 /* MacOSpwa */,
-				5729989D20C9FD12008F0388 /* MacOSpwaTests */,
-				572998A820C9FD12008F0388 /* MacOSpwaUITests */,
 				5729988620C9FD10008F0388 /* Products */,
 				573097B320CB34E000329F83 /* PWAinfo */,
 			);
@@ -96,8 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				5729988520C9FD10008F0388 /* PWAConcept.app */,
-				5729989A20C9FD12008F0388 /* MacOSpwaTests.xctest */,
-				572998A520C9FD12008F0388 /* MacOSpwaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,29 +66,10 @@
 				5729989120C9FD12008F0388 /* Main.storyboard */,
 				5729989420C9FD12008F0388 /* Info.plist */,
 				5729989520C9FD12008F0388 /* MacOSpwa.entitlements */,
-				5729988C20C9FD10008F0388 /* MacOSpwa.xcdatamodeld */,
 				571763F720E2F0E800E360AA /* Manifest.swift */,
 				5752409A20EAA09000F139D0 /* Extension.swift */,
 			);
 			path = MacOSpwa;
-			sourceTree = "<group>";
-		};
-		5729989D20C9FD12008F0388 /* MacOSpwaTests */ = {
-			isa = PBXGroup;
-			children = (
-				5729989E20C9FD12008F0388 /* MacOSpwaTests.swift */,
-				572998A020C9FD12008F0388 /* Info.plist */,
-			);
-			path = MacOSpwaTests;
-			sourceTree = "<group>";
-		};
-		572998A820C9FD12008F0388 /* MacOSpwaUITests */ = {
-			isa = PBXGroup;
-			children = (
-				572998A920C9FD12008F0388 /* MacOSpwaUITests.swift */,
-				572998AB20C9FD12008F0388 /* Info.plist */,
-			);
-			path = MacOSpwaUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,42 +92,6 @@
 			productReference = 5729988520C9FD10008F0388 /* PWAConcept.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5729989920C9FD12008F0388 /* MacOSpwaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 572998B120C9FD12008F0388 /* Build configuration list for PBXNativeTarget "MacOSpwaTests" */;
-			buildPhases = (
-				5729989620C9FD12008F0388 /* Sources */,
-				5729989720C9FD12008F0388 /* Frameworks */,
-				5729989820C9FD12008F0388 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5729989C20C9FD12008F0388 /* PBXTargetDependency */,
-			);
-			name = MacOSpwaTests;
-			productName = MacOSpwaTests;
-			productReference = 5729989A20C9FD12008F0388 /* MacOSpwaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		572998A420C9FD12008F0388 /* MacOSpwaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 572998B420C9FD12008F0388 /* Build configuration list for PBXNativeTarget "MacOSpwaUITests" */;
-			buildPhases = (
-				572998A120C9FD12008F0388 /* Sources */,
-				572998A220C9FD12008F0388 /* Frameworks */,
-				572998A320C9FD12008F0388 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				572998A720C9FD12008F0388 /* PBXTargetDependency */,
-			);
-			name = MacOSpwaUITests;
-			productName = MacOSpwaUITests;
-			productReference = 572998A520C9FD12008F0388 /* MacOSpwaUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -210,14 +110,6 @@
 							};
 						};
 					};
-					5729989920C9FD12008F0388 = {
-						CreatedOnToolsVersion = 9.4;
-						TestTargetID = 5729988420C9FD10008F0388;
-					};
-					572998A420C9FD12008F0388 = {
-						CreatedOnToolsVersion = 9.4;
-						TestTargetID = 5729988420C9FD10008F0388;
-					};
 				};
 			};
 			buildConfigurationList = 5729988020C9FD10008F0388 /* Build configuration list for PBXProject "MacOSpwa" */;
@@ -234,8 +126,6 @@
 			projectRoot = "";
 			targets = (
 				5729988420C9FD10008F0388 /* MacOSpwa */,
-				5729989920C9FD12008F0388 /* MacOSpwaTests */,
-				572998A420C9FD12008F0388 /* MacOSpwaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -251,20 +141,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5729989820C9FD12008F0388 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		572998A320C9FD12008F0388 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -273,43 +149,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5752409B20EAA09000F139D0 /* Extension.swift in Sources */,
-				5729988E20C9FD10008F0388 /* MacOSpwa.xcdatamodeld in Sources */,
 				5729988B20C9FD10008F0388 /* ViewController.swift in Sources */,
 				5729988920C9FD10008F0388 /* AppDelegate.swift in Sources */,
 				571763F820E2F0E800E360AA /* Manifest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5729989620C9FD12008F0388 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5729989F20C9FD12008F0388 /* MacOSpwaTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		572998A120C9FD12008F0388 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				572998AA20C9FD12008F0388 /* MacOSpwaUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5729989C20C9FD12008F0388 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5729988420C9FD10008F0388 /* MacOSpwa */;
-			targetProxy = 5729989B20C9FD12008F0388 /* PBXContainerItemProxy */;
-		};
-		572998A720C9FD12008F0388 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5729988420C9FD10008F0388 /* MacOSpwa */;
-			targetProxy = 572998A620C9FD12008F0388 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5729989120C9FD12008F0388 /* Main.storyboard */ = {
@@ -478,84 +324,6 @@
 			};
 			name = Release;
 		};
-		572998B220C9FD12008F0388 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MacOSpwaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.pwabuilder.MacOSpwaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacOSpwa.app/Contents/MacOS/MacOSpwa";
-			};
-			name = Debug;
-		};
-		572998B320C9FD12008F0388 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MacOSpwaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.pwabuilder.MacOSpwaTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MacOSpwa.app/Contents/MacOS/MacOSpwa";
-			};
-			name = Release;
-		};
-		572998B520C9FD12008F0388 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MacOSpwaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.pwabuilder.MacOSpwaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = MacOSpwa;
-			};
-			name = Debug;
-		};
-		572998B620C9FD12008F0388 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MacOSpwaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.pwabuilder.MacOSpwaUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = MacOSpwa;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -577,38 +345,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		572998B120C9FD12008F0388 /* Build configuration list for PBXNativeTarget "MacOSpwaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				572998B220C9FD12008F0388 /* Debug */,
-				572998B320C9FD12008F0388 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		572998B420C9FD12008F0388 /* Build configuration list for PBXNativeTarget "MacOSpwaUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				572998B520C9FD12008F0388 /* Debug */,
-				572998B620C9FD12008F0388 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		5729988C20C9FD10008F0388 /* MacOSpwa.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5729988D20C9FD10008F0388 /* MacOSpwa.xcdatamodel */,
-			);
-			currentVersion = 5729988D20C9FD10008F0388 /* MacOSpwa.xcdatamodel */;
-			path = MacOSpwa.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 5729987D20C9FD10008F0388 /* Project object */;
 }

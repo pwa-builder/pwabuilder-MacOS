@@ -87,19 +87,24 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_2) AppleWebKit/602.3.12 (KHTML, like Gecko) Version/10.0.2 Safari/602.3.12"
     }
     
+    /*
+        Manifest path defined in the `Bundle.main.path` function call.
+        If the manifest.json file does not exist at this path the app will not work.
+     */
     override func viewWillAppear() {
-        //TODO: Remove this later --- PWABuilder will load data from manifest
-        //Load data from manifest.json to create a manifest object
         if manifest == nil {
-            let path = Bundle.main.path(forResource: "PWAinfo/manifest", ofType: "json")
-            let url = URL(fileURLWithPath: path!)
-            do {
-                let jsonData = try Data(contentsOf: url)
-                let json = try JSONSerialization.jsonObject(with: jsonData) as! [String:Any]
-                manifest = Manifest(json: json)
-                webUrl = manifest.getAppStartUrl()
-            } catch {
-                print(error)
+            if let path = Bundle.main.path(forResource: "PWAinfo/manifest", ofType: "json") {
+                let url = URL(fileURLWithPath: path)
+                do {
+                    let jsonData = try Data(contentsOf: url)
+                    let json = try JSONSerialization.jsonObject(with: jsonData) as! [String:Any]
+                    manifest = Manifest(json: json)
+                    webUrl = manifest.getAppStartUrl()
+                } catch {
+                    print(error)
+                }
+            } else {
+                print("unable to find manifest within bundle path")
             }
         }
         
@@ -111,7 +116,11 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         }
         
     }
-    
+
+    /*
+        If you are getting an error in view did appear, you need to specify the correct manifest path.
+        The default is PWAinfo/manifest.json
+     */
     override func viewDidAppear() {
         view.window?.title = manifest.getAppName()
         

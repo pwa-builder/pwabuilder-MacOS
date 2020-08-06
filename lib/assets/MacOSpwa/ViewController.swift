@@ -93,7 +93,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
      */
     override func viewWillAppear() {
         if manifest == nil {
-            if let path = Bundle.main.path(forResource: "PWAinfo/manifest", ofType: "json") {
+            if let path = Bundle.main.path(forResource: "manifest", ofType: "json") {
                 let url = URL(fileURLWithPath: path)
                 do {
                     let jsonData = try Data(contentsOf: url)

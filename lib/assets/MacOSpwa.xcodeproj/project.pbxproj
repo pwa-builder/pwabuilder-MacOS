@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4878EAD824DB912900803893 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 4878EAD724DB912900803893 /* manifest.json */; };
 		571763F820E2F0E800E360AA /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571763F720E2F0E800E360AA /* Manifest.swift */; };
 		5729988920C9FD10008F0388 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5729988820C9FD10008F0388 /* AppDelegate.swift */; };
 		5729988B20C9FD10008F0388 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5729988A20C9FD10008F0388 /* ViewController.swift */; };
 		5729989020C9FD12008F0388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5729988F20C9FD12008F0388 /* Assets.xcassets */; };
 		5729989320C9FD12008F0388 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5729989120C9FD12008F0388 /* Main.storyboard */; };
-		573097B420CB34E000329F83 /* PWAinfo in Resources */ = {isa = PBXBuildFile; fileRef = 573097B320CB34E000329F83 /* PWAinfo */; };
 		5752409B20EAA09000F139D0 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5752409A20EAA09000F139D0 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4878EAD724DB912900803893 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
 		571763F720E2F0E800E360AA /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
 		5729988520C9FD10008F0388 /* PWAConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PWAConcept.app; path = MacOSpwa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5729988820C9FD10008F0388 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -25,7 +26,6 @@
 		5729989220C9FD12008F0388 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5729989420C9FD12008F0388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5729989520C9FD12008F0388 /* MacOSpwa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacOSpwa.entitlements; sourceTree = "<group>"; };
-		573097B320CB34E000329F83 /* PWAinfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = PWAinfo; sourceTree = "<group>"; };
 		5752409A20EAA09000F139D0 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,7 +45,6 @@
 			children = (
 				5729988720C9FD10008F0388 /* MacOSpwa */,
 				5729988620C9FD10008F0388 /* Products */,
-				573097B320CB34E000329F83 /* PWAinfo */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +61,7 @@
 			children = (
 				5729988820C9FD10008F0388 /* AppDelegate.swift */,
 				5729988A20C9FD10008F0388 /* ViewController.swift */,
+				4878EAD724DB912900803893 /* manifest.json */,
 				5729988F20C9FD12008F0388 /* Assets.xcassets */,
 				5729989120C9FD12008F0388 /* Main.storyboard */,
 				5729989420C9FD12008F0388 /* Info.plist */,
@@ -135,7 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				573097B420CB34E000329F83 /* PWAinfo in Resources */,
+				4878EAD824DB912900803893 /* manifest.json in Resources */,
 				5729989020C9FD12008F0388 /* Assets.xcassets in Resources */,
 				5729989320C9FD12008F0388 /* Main.storyboard in Resources */,
 			);

@@ -119,7 +119,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
 
     /*
         If you are getting an error in view did appear, you need to specify the correct manifest path.
-        The default is PWAinfo/manifest.json
+        The default is MacOSpwa/manifest.json
      */
     override func viewDidAppear() {
         view.window?.title = manifest.getAppName()

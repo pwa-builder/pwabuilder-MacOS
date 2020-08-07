@@ -93,7 +93,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
      */
     override func viewWillAppear() {
         if manifest == nil {
-            if let path = Bundle.main.path(forResource: "PWAinfo/manifest", ofType: "json") {
+            if let path = Bundle.main.path(forResource: "manifest", ofType: "json") {
                 let url = URL(fileURLWithPath: path)
                 do {
                     let jsonData = try Data(contentsOf: url)
@@ -119,7 +119,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate, WKSc
 
     /*
         If you are getting an error in view did appear, you need to specify the correct manifest path.
-        The default is PWAinfo/manifest.json
+        The default is MacOSpwa/manifest.json
      */
     override func viewDidAppear() {
         view.window?.title = manifest.getAppName()

@@ -1,6 +1,6 @@
 {
   "name": "pwabuilder-macos",
-  "version": "0.3.9",
+  "version": "0.3.10",
   "description": "Mac OS platform template",
   "repository": {
     "type": "git",

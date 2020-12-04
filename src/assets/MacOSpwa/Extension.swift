@@ -1,11 +1,3 @@
-//
-//  Extension.swift
-//  MacOSpwa
-//
-//  Created by Rumsha Siddiqui on 7/2/18.
-//  Copyright © 2018 Microsoft. All rights reserved.
-//
-
 import Foundation
 import Cocoa
 
